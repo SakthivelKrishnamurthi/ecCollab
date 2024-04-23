@@ -6,7 +6,6 @@ const { promisify } = require("util");
 const VideoModel = require("../models/video");
 
 
-
 const upload = multer({ storage: multer.memoryStorage() }).single("video");
 
 const listVideos = asyncHandler(async (req, res) => {
