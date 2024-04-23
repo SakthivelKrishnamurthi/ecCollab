@@ -4,10 +4,7 @@ const multer = require("multer");
 const path = require("path");
 const { promisify } = require("util");
 const VideoModel = require("../models/video");
-
-
 const upload = multer({ storage: multer.memoryStorage() }).single("video");
-
 const listVideos = asyncHandler(async (req, res) => {
     try {
         const data = await s3.listObjectsV2({ Bucket: "sak-srp" }).promise();
