@@ -1,5 +1,4 @@
-import { AddIcon, Icon } from "@chakra-ui/icons"; // Import Icon from Chakra-UI
-import { MdVideoLibrary } from 'react-icons/md'
+import { AddIcon } from "@chakra-ui/icons"; 
 import { Box, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
@@ -46,20 +45,6 @@ const MyChats = ({ fetchAgain }) => {
     // eslint-disable-next-line
   }, [fetchAgain]);
 
-  useEffect(() => {
-    const fetchLatestVideo = async () => {
-      try {
-        const response = await axios.get('/api/aws');
-        const { latestVideo } = response.data;
-        console.log(latestVideo);
-        setLatestVideo(latestVideo);
-      } catch (error) {
-        console.error('Error fetching latest video:', error);
-      }
-    };
-
-    fetchLatestVideo(); 
-  }, [latestVideo]);
 
   return (
     <Box

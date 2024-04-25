@@ -4,7 +4,15 @@ const multer = require("multer");
 const path = require("path");
 const { promisify } = require("util");
 const VideoModel = require("../models/video");
+
+const s3 = new aws.S3({
+    accessKeyId: "AKIAZJAQWYAO7ADUUNGI",
+    secretAccessKey: "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",
+    region: "eu-north-1",
+});
+
 const upload = multer({ storage: multer.memoryStorage() }).single("video");
+
 const listVideos = asyncHandler(async (req, res) => {
     try {
         const data = await s3.listObjectsV2({ Bucket: "sak-srp" }).promise();
