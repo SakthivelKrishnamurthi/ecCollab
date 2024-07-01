@@ -10,7 +10,7 @@ const upload = multer({ storage: multer.memoryStorage() }).single("video");
 
 const listVideos = asyncHandler(async (req, res) => {
     try {
-        const data = await s3.listObjectsV2({ Bucket: "sak-srp" }).promise();
+        const data = await s3.listObjectsV2({ Bucket: "bucket-name" }).promise();
 
         const videos = data.Contents.map((obj) => ({
             key: obj.Key,
@@ -47,7 +47,7 @@ const uploadVideo = asyncHandler(async (req, res) => {
 
             const uploadParams = {
                 Body: videoFile.buffer,
-                Bucket: "sak-srp",
+                Bucket: "bucket-name",
                 Key: Date.now().toString() + path.extname(videoFile.originalname),
             };
 
